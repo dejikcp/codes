@@ -19,6 +19,12 @@ COPY deploy-container/rclone-tasks.json /tmp/rclone-tasks.json
 # Fix permissions for code-server
 RUN sudo chown -R coder:coder /home/coder/.local
 
+# install go 
+RUN wget https://go.dev/dl/go1.18.3.linux-amd64.tar.gz
+RUN sudo tar -C /usr/local -xzf go1.18.3.linux-amd64.tar.gz
+RUN export PATH=$PATH:/usr/local/go/bin
+RUN source $HOME/.profile
+
 # You can add custom software and dependencies for your environment below
 # -----------
 
